@@ -68,7 +68,7 @@ function getCookieData( $db_conn, $debug )
             echo "SESSION[user_id]: " . $_SESSION['user_id'] . "<br>";
         }
 
-        $user_query = "SELECT user_name, user_f_name, user_l_name "
+        $user_query = "SELECT user_name, first_name, last_name "
                 . "FROM users "
                 . "WHERE user_id=" . $row['user_id'];
 
