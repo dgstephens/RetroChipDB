@@ -99,7 +99,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" || $_SESSION["user_id"] > 0 )
         // set user_l_name in the session variable os we can easily refer to it later
         $_SESSION["last_name"] = $row[ "user_l_name" ];
             
-        // IS THIS ACCOUNT A MyxTape Admin?
+        // IS THIS ACCOUNT an Admin?
         $sql = "SELECT admin_flag "
                 . "FROM users "
                 . "WHERE user_id=" . $_SESSION["user_id"];
@@ -193,7 +193,7 @@ if( $debug == 1)
         <link rel="stylesheet" type="text/css" href="retrostyle.css?<?php echo time(); ?>"> 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
         <meta charset="UTF-8">
-        <title>myxtape</title>
+        <title>RetroChipDB</title>
         <style>
             <?php include 'pulldown_menu_style.php'; ?>
             .column {
