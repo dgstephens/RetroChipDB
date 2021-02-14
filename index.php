@@ -378,31 +378,7 @@ $launch_page_num = rand( 1, 3 );
             </div>
           </div>     
         </div>
-        <!-- Info Modal Done --> 
-        
-        <!-- The Request Modal -->
-        <div id="myRequestModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <div class="modal-header">
-              <span class="close" id="close4">&times;</span>
-              <h2>Request a MyxTape Account</h2>
-            </div>
-            <div class="modal-body">
-                Enter your email address and we'll send you an invitation to join MyxTape.<p>
-                We will never share your email address with a third party or send you unsolicited email.
-                <p>
-                <form method="post" action="request_account.php" enctype="multipart/form-data" name="form1" id="form1" >
-                    <div>
-                            <input type="text" size="40%" id="email_address" name="email_address" placeholder="email address" onblur="validate()" />
-                        
-                            <input name="Submit" type="submit" id="submit" value="Request Account" />
-                    </div>
-                </form>
-            </div>
-          </div>     
-        </div>
-        <!-- Info Modal Done -->         
+        <!-- Info Modal Done -->        
         
         <!-- video modal -->
         <div id="myVideoModal" class="modal">

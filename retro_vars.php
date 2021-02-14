@@ -4,7 +4,7 @@
  *********************************************/
 
 // url
-$myx_url = "http://www.retrochipdb.com/";
+$retro_url = "http://www.retrochipdb.com/";
 
 // tape price
 $tape_price = "15.00";
