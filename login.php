@@ -195,7 +195,6 @@ if( $debug == 1)
         <meta charset="UTF-8">
         <title>RetroChipDB</title>
         <style>
-            <?php include 'pulldown_menu_style.php'; ?>
             .column {
                 float: left;
                 width: 20%;
