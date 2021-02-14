@@ -36,6 +36,8 @@ function randomString($length = 6) {
 // Attempt to retrieve our login state from the "remember" cookie
 function getCookieData( $db_conn, $debug )
 {
+    $debug = 1;
+    
     $user_id = 0; // set user_id to 0 by default
 
     if( $debug == 1 )
