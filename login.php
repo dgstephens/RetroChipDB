@@ -47,7 +47,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" || $_SESSION["user_id"] > 0 )
         $user = mysqli_real_escape_string( $conn, htmlentities( $_POST["username"] ));
         $password = mysqli_real_escape_string( $conn, htmlentities( $_POST["password"] ));
 
-        $sql = "SELECT user_id, user_f_name, user_l_name, password " 
+        $sql = "SELECT user_id, first_name, last_name, password " 
                 . "FROM users "
                 . "WHERE user_name='" . $user . "'";
 

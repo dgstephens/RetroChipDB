@@ -340,10 +340,10 @@ $launch_page_num = rand( 1, 3 );
           <div class="modal-content">
             <div class="modal-header">
               <span class="close">&times;</span>
-              <h2>Log In to MyxTape</h2>
+              <h2>Log In to RetroChipDB</h2>
             </div>
             <div class="modal-body">
-                <form method="post" name="login" action="<?php echo $myx_url; ?>login.php">
+                <form method="post" name="login" action="<?php echo $retro_url; ?>login.php">
                     <input id="username_input" type="text" name="username" placeholder="username" value="" /> <br>
                     <input id="password_input" type="password" name="password" placeholder="password" value="" /> <br>
                     <input type="submit" value="Log In" />
@@ -387,7 +387,7 @@ $launch_page_num = rand( 1, 3 );
           <div class="modal-video">
             <div class="modal-header">
               <span class="close" id="close3">&times;</span>
-              <h2>MyxTape</h2>
+              <h2>RetroChipDB</h2>
             </div>
             <div class="modal-body">
                 <!--
