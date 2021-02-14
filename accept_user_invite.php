@@ -1,20 +1,20 @@
 <?php
 session_start();
-// accept_user_invite Version .4
-// last modified 062617
+// accept_user_invite Version .5
+// last modified 140221
 // modified by: dgs
 // TODO
 //
 $debug=0;
-include 'myx_vars.php';
-include 'myx_functions.php';
+include 'retro_vars.php';
+include 'retro_functions.php';
 include 'debug_code.php';  
 
 // SET VARS
 $user_name = $user_name_err = $password_1 = $password_1_err = $password_2 = $password_2_err = "";
         
 ?>
-<!-- Copyright 2017 myxtape -->
+<!-- Copyright 2021 geekpower -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,144 +36,18 @@ $user_name = $user_name_err = $password_1 = $password_1_err = $password_2 = $pas
             }
         </script>        
         <link REL="icon" HREF="favicon.ico">
-        <link rel="stylesheet" type="text/css" href="myxstyle.css?<?php echo time(); ?>">
+        <link rel="stylesheet" type="text/css" href="retrostyle.css?<?php echo time(); ?>">
         <meta charset="UTF-8">
-        <title>MyxTape Invite User</title>
+        <title>RetroChipDB Invite User</title>
         <style>
             body { 
-                background: none; /* overwrite background color from myxstyle.css */
+                background: none; /* overwrite background color from retrostyle.css */
             }
             html{
                 background: url( img/solo_tape_white.png ) fixed no-repeat;
                 background-size: cover;
             }
-            /* The Modal (background) */
-            .modal {
-                display: none; /* Hidden by default */
-                position: fixed; /* Stay in place */
-                z-index: 1; /* Sit on top */
-                padding-top: 200px; /* Location of the box */
-                left: 0; 
-                top: 0;
-                width: 100%; /* Full width */
-                height: 100%; /* Full height */
-                overflow: auto; /* Enable scroll if needed */
-                background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,25,50,0.4); /* Black w/ opacity */
-            }
-
-            /* Modal Content */
-            .modal-content {
-                position: relative;
-                background-color: white;
-                margin: auto;
-                padding: 0;
-                border: 1px solid #ea842a; /* this creates a solid border around the box */
-                border-radius: 7px;
-                width: 40%; /* the width of the box in the browser window */
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-                -webkit-animation-name: animatetop;
-                -webkit-animation-duration: 0.4s;
-                animation-name: animatetop;
-                animation-duration: 0.4s
-            }
-            /* Modal Video Content */
-            .modal-video {
-                position: relative;
-                background-color: white;
-                margin: auto;
-                padding: 0;
-                border: 1px solid #ea842a; /* this creates a solid border around the box */
-                border-radius: 7px;
-                width: 600px; /* the width of the box in the browser window */
-                box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-                -webkit-animation-name: animatetop;
-                -webkit-animation-duration: 0.4s;
-                animation-name: animatetop;
-                animation-duration: 0.4s
-            }
-            /* Add Animation */
-            @-webkit-keyframes animatetop {
-                from {top:-300px; opacity:0} 
-                to {top:0; opacity:1}
-            }
-
-            @keyframes animatetop {
-                from {top:-300px; opacity:0}
-                to {top:0; opacity:1}
-            }
-
-            /* The Close Button */
-            .close {
-                color: white;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-            }
-
-            .close:hover,
-            .close:focus {
-                color: #000;
-                text-decoration: none;
-                cursor: pointer;
-            }
-
-            .modal-header {
-                padding: 2px 16px;
-                background-color: #ea842a;
-                border-top-left-radius: 7px;
-                border-top-right-radius: 7px;
-                color: white;
-            }
-
-            .modal-body {
-                padding: 2px 16px;
-                background-color: white;
-            }
-
-            .modal-footer {
-                padding: 2px 16px;
-                background-color: #ea842a;
-                border-bottom-left-radius: 7px;
-                border-bottom-right-radius: 7px;
-                color: white;
-            }
             
-            /* The Login Button */
-            #myBtn {
-                background-color: #ff7800;
-                border: none;
-                color: white;
-                padding: 10px 32px;
-                text_decoration: none;
-                margin: 4px 2px;
-                border-radius: 7px;
-                cursor: pointer;
-                outline: none;
-            }
-            
-            #myInfoBtn {
-                background-color: #ffffff;
-                border: 1px solid #888;                
-                color: black;
-                padding: 10px 32px;
-                text_decoration: none;
-                margin: 4px 2px;
-                border-radius: 7px;
-                cursor: pointer;
-                outline: none;
-            }
-           #myVideoBtn {
-                background-color: #ffffff;
-                border: 1px solid #888;                
-                color: black;
-                padding: 10px 32px;
-                text_decoration: none;
-                margin: 4px 2px;
-                border-radius: 7px;
-                cursor: pointer;
-                outline: none;
-            }            
         </style>
     </head>
     <body>
@@ -182,7 +56,7 @@ $user_name = $user_name_err = $password_1 = $password_1_err = $password_2 = $pas
 
 include 'debug_code.php';    
 
-echo "<H1><b>MyxTape</h1>\n<P>Accept invitation</P></b>\n";
+echo "<H1><b>RetroChipDB</h1>\n<P>Accept invitation</P></b>\n";
 
 
 // create connection
@@ -297,7 +171,7 @@ else // we came here via a link
 {
     // check to make sure our invite_user_key is valid AND has not already been used
     $sql_key_check = "SELECT invite_user_id, invite_email, used " 
-        . "FROM myx_user_invite "
+        . "FROM user_invite "
         . "WHERE invite_user_key=\"" . $_GET["invite_user_key"] . "\"";
     
     if( $debug == 1 ) { echo $sql_key_check . "<br>"; }
@@ -321,13 +195,13 @@ else // we came here via a link
     $used = $row["used"];
 }
 
-// Write this info to the myx_user table
+// Write this info to the users table
 if( $write_to_database == 1 )
 {    
     // hash the password
     $password_encr = password_hash( $password_1, PASSWORD_BCRYPT );
     
-    $sql = "INSERT INTO myx_user "
+    $sql = "INSERT INTO users "
             . "(user_name, password, email_address)"
             . "VALUES(\"" . $user_name . "\",\"" . $password_encr . "\" , \""
             . $invite_email . "\")";
@@ -338,7 +212,7 @@ if( $write_to_database == 1 )
     if( $conn->query( $sql ) === TRUE )
     {         
         // and mark the invitation as used
-        $sql_invite_used = "UPDATE myx_user_invite "
+        $sql_invite_used = "UPDATE user_invite "
                 . "SET used=1 "
                 . "WHERE invite_user_id=" . $invite_user_id;
         
@@ -346,15 +220,15 @@ if( $write_to_database == 1 )
         
         if( $conn->query( $sql_invite_used ) === TRUE )
         {
-            // CONGRATULATE OUR NEW USER FOR JOINING MyxTape
-            echo "Congratulations " . $user_name . " has joined MyxTape.<br>";
+            // CONGRATULATE OUR NEW USER FOR JOINING RetroChipDB
+            echo "Congratulations " . $user_name . " has joined RetroChipDB.<br>";
         } else {
             echo "Error: " . $sql_invite_used . "<br>" . $conn->error;
         } 
         
         // Find our new user_id
         $sql_user_id = "SELECT user_id "
-                . "FROM myx_user "
+                . "FROM users "
                 . "WHERE user_name = \"" . $user_name . "\"";
         
         if( $debug == 1 ) { echo $sql_user_id . "<br>"; }
@@ -364,12 +238,12 @@ if( $write_to_database == 1 )
         $row = $result->fetch_assoc();        
 
         // ENCOURAGE USER TO ADD MORE USER DATA -> continue to User Account Info section
-        $_SESSION["myx_user_id"] = $row["user_id"];
-        $_SESSION["myx_user_f_name"] = "user"; // Set this to something so it is not blank when we see the "account" pull-down menu
+        $_SESSION["user_id"] = $row["user_id"];
+        $_SESSION["first_name"] = "user"; // Set this to something so it is not blank when we see the "account" pull-down menu
         echo "<br>Now that you have successfully created an account<br> ";
-        echo "Please add more info to your <b><a href=\"" . $myx_url 
+        echo "Please add more info to your <b><a href=\"" . $retro_url 
             . "user_account_info.php\">profile</a>.</b>";       
-        echo "<p>Or go straight to the fun and create a <a href=\"/login.php\"><span class=orange>new mix</class>.</a>";
+        echo "<p>Or go straight to the fun and create a <a href=\"/login.php\"><span class=orange>new project</class>.</a>";
     }
     else
     {
@@ -380,7 +254,7 @@ if( $write_to_database == 1 )
 else
 {
 ?>             
-        You have been invited to join MyxTape.<br>
+        You have been invited to join RetroChipDB.<br>
         
         <!-- The Info Modal -->
         <div id="myInfoModal" class="modal">
@@ -390,13 +264,13 @@ else
             <div class="modal-header">
               <!-- <span class="close">&times;</span> -->
               <span class="close"></span>  
-              <h2>About Myxtape</h2>
+              <h2>About RetroChipDB</h2>
             </div>
             <div class="modal-body">
-                MyxTape is all about creating wonderful music mixes for yourself and your friends.
-                It is a simple platform that allows you to upload music you already own to create
-                a custom mix on an analog audio cassette. We then mail that cassette, along with
-                custom art, to you or a friend.<p>
+                The Retro Chip DB exists to help you keep track of the nifty bits you use to
+                keep your retro gear running. I developed it for myself and thought that
+                there's likely at least one other person who might find this useful. So,
+                Trevor, this is for you.<p>
             </div>
           </div>     
         </div>
@@ -409,7 +283,7 @@ else
           <div class="modal-video">
             <div class="modal-header">
               <span class="close" id="close3">&times;</span>
-              <h2>MyxTape</h2>
+              <h2>RetroChipDB</h2>
             </div>
             <div class="modal-body">
                 <iframe id="cartoonVideo" width="560" height="315" src="//www.youtube.com/embed/XomSDI_ML2A" frameborder="0" allowfullscreen></iframe> 
@@ -419,7 +293,7 @@ else
         <!-- Video modal done -->
         
                 <p align="left">
-                    <button id="myInfoBtn">What is MyxTape</button><button id="myVideoBtn">Watch the Video</button>
+                    <button id="myInfoBtn">What is RetroChipDB</button><button id="myVideoBtn">Watch the Video</button>
                 </p>        
         
         <script>
@@ -487,7 +361,7 @@ if( $debug == 1 )
 
 if( empty( $user_name_err ) )
 {
-    $user_name_err = "Choose your MyxTape username";
+    $user_name_err = "Choose your RetroChipDB username";
 }
 if( empty( $password_1_err ))
 {
