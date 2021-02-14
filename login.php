@@ -93,11 +93,11 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" || $_SESSION["user_id"] > 0 )
         // set user_id in the session variable so we know we are logged in
         $_SESSION["user_id"] = $row[ "user_id" ];
 
-        // set user_f_name in the session variable so we can easily refer to it later
-        $_SESSION["first_name"] = $row[ "user_f_name" ];
+        // set first_name in the session variable so we can easily refer to it later
+        $_SESSION["first_name"] = $row[ "first_name" ];
 
-        // set user_l_name in the session variable os we can easily refer to it later
-        $_SESSION["last_name"] = $row[ "user_l_name" ];
+        // set last_name in the session variable os we can easily refer to it later
+        $_SESSION["last_name"] = $row[ "last_name" ];
             
         // IS THIS ACCOUNT an Admin?
         $sql = "SELECT admin_flag "

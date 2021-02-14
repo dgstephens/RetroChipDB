@@ -37,7 +37,7 @@ function randomString($length = 6) {
 function getCookieData( $db_conn, $debug )
 {
     $debug = 1;
-    
+
     $user_id = 0; // set user_id to 0 by default
 
     if( $debug == 1 )
@@ -84,10 +84,10 @@ function getCookieData( $db_conn, $debug )
         // set user_name just for good measure
         $_SESSION["user_name"] = $user_name = $row["user_name"];
 
-        // set user_f_name in the session variable so we can easily refer to it later
+        // set first_name in the session variable so we can easily refer to it later
         $_SESSION["first_name"] = $row["first_name"];
 
-        // set user_l_name in the session variable so we can easily refer to it later
+        // set last_name in the session variable so we can easily refer to it later
         $_SESSION["last_name"] = $row["last_name"];
 
         $logged_in = 1;
@@ -115,7 +115,7 @@ function getCookieData( $db_conn, $debug )
 ///////////////////////////////
 
 // Send invitation
-function myx_sendEmail( $user_f_name, $user_l_name,$email_address,$myx_url,$invite_user_key )
+function myx_sendEmail( $first_name, $last_name,$email_address,$retro_url,$invite_user_key )
 {
     require '/var/www/myxtape/vendor/autoload.php';
     $mail = new PHPMailer( true );
@@ -156,15 +156,15 @@ function myx_sendEmail( $user_f_name, $user_l_name,$email_address,$myx_url,$invi
     
 
     //Email Body
-    $mail->AddAddress($email_address, 'MyxTape User');
-    $mail->setFrom('myxtape.me@gmail.com', 'MyxTape');
-    $mail->Subject = "You are invited to join MyxTape";
+    $mail->AddAddress($email_address, 'RetroChipDB User');
+    $mail->setFrom('myxtape.me@gmail.com', 'RetroChipDB');
+    $mail->Subject = "You are invited to join the RetroChipDB";
     $mail->isHTML( true );
-    $mail->Body = "$user_f_name $user_l_name has invited you to join <b>MyxTape</b>!"
-            . "<p><a href=" . $myx_url . "learn_more.php>Learn more</a> about MyxTape"
+    $mail->Body = "$first_name $last_name has invited you to join <b>RetroChipDB</b>!"
+            . "<p><a href=" . $retro_url . "learn_more.php>Learn more</a> about the RetroChipDB"
             . "<p>"
             . "Click the following link to <a href="
-            . $myx_url . "accept_user_invite.php?invite_user_key=" . $invite_user_key . "><b>Accept the Invitation</b></a>";
+            . $retro_url . "accept_user_invite.php?invite_user_key=" . $invite_user_key . "><b>Accept the Invitation</b></a>";
 
     try{
         $mail->Send();
