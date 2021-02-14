@@ -14,7 +14,7 @@ include 'debug_code.php';
 <html>
     <head>
         <link REL="icon" HREF="favicon.ico">
-        <link rel="stylesheet" type="text/css" href="myxstyle.css?<?php echo time(); ?>">
+        <link rel="stylesheet" type="text/css" href="retrostyle.css?<?php echo time(); ?>">
         <meta charset="UTF-8">
         <title>RetroChipDB</title>
         <style>
@@ -53,7 +53,7 @@ include 'debug_code.php';
 
 
 // check to see if we are logged in
-if( $_SESSION["myx_user_id"] == 0 )
+if( $_SESSION["user_id"] == 0 )
 {
     exit( "You don't have permission to be here" );
 }
@@ -172,7 +172,7 @@ else // we came here from a link
 
 if( $write_to_database == 1 )
 {
-    $sql = "UPDATE myx_user "
+    $sql = "UPDATE users "
             . "SET first_name='" . $first_name . "',last_name='" . $last_name 
             . "',short_bio='" . $short_bio 
             . "',email_address='" . $email_address . "',facebook_link='" . $facebook_link
@@ -237,7 +237,7 @@ else // we've come here from a link - display our current data
             </form>
     <?php
     
-    // Show our last login time - which is the penultimate entry in the myx_user_login_track table
+    // Show our last login time - which is the penultimate entry in the user_login_track table
     $sql = "SELECT login_time "
             . "FROM user_login_track "
             . "WHERE user_id = " . $_SESSION["user_id"] 
