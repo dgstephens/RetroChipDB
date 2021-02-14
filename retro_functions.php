@@ -115,7 +115,7 @@ function getCookieData( $db_conn, $debug )
 ///////////////////////////////
 
 // Send invitation
-function myx_sendEmail( $first_name, $last_name,$email_address,$retro_url,$invite_user_key )
+function sendEmail( $first_name, $last_name,$email_address,$retro_url,$invite_user_key )
 {
     require '/var/www/myxtape/vendor/autoload.php';
     $mail = new PHPMailer( true );

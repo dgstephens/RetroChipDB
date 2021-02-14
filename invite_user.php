@@ -1,17 +1,17 @@
 <?php
 session_start();
-// invite_user Version .3
-// last modified 062617
+// invite_user Version .4
+// last modified 140221
 // modified by: dgs
 // TODO
 // 
 $debug=0;
-include 'myx_vars.php';
-include 'myx_functions.php';
+include 'retro_vars.php';
+include 'retro_functions.php';
 include 'debug_code.php';   
 
 ?>
-<!-- Copyright 2017 MyxTape -->
+<!-- Copyright 2021 geekpower -->
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -21,19 +21,16 @@ and open the template in the editor.
 <html>
     <head>
         <link REL="icon" HREF="favicon.ico">
-        <link rel="stylesheet" type="text/css" href="myxstyle.css?<?php echo time(); ?>">
+        <link rel="stylesheet" type="text/css" href="retrostyle.css?<?php echo time(); ?>">
         <meta charset="UTF-8">
-        <title>MyxTape Invite User</title>
-        <style>
-<?php include 'myx_pulldown_menu_style.php'; ?>
-        </style>
+        <title>RetroChipDB Invite User</title>
     </head>
     <body>
 
 <?php
 
 // check to see if we are logged in
-if( $_SESSION["myx_user_id"] == 0 )
+if( $_SESSION["user_id"] == 0 )
 {
     exit( "You don't have permission to be here" );
 }
@@ -51,7 +48,7 @@ if( $conn->connect_error )
 ////////////////////////////////////
 // MENU BUTTON and HEADER TITLE
 ////////////////////////////////////
-include 'myx_pulldown_menu_button.php';
+include 'pulldown_menu_button.php';
 echo "<div class=\"mainDiv\">"; //start main div
 
 echo "<p><b>Invite a Friend</b></P>\n";
@@ -76,14 +73,13 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) // we came here from submitting this 
     }
 }
 
-// Write this person to the database to invite them to try MyxTape
-// will run a cron job later that actually sends email to this
-// user
+// Write this person to the database to invite them to try RetroChipDB
+
 if( $write_to_database == 1 )
 {
     // check if this email has already been invited
     $sql_email_check = "SELECT invite_user_id "
-            . "FROM myx_user_invite "
+            . "FROM user_invite "
             . "WHERE invite_email=\"" . $email_address . "\"";
     
     if( $debug == 1 ) { echo $sql_email_check . "<br>"; }
@@ -98,10 +94,10 @@ if( $write_to_database == 1 )
         // Generate invite key
         $invite_user_key = randomString( 16 );
         
-        $sql = "INSERT INTO myx_user_invite "
+        $sql = "INSERT INTO user_invite "
                 . "(invite_user_key, invite_email, invite_by_user_id )"
                 . "VALUES(\"" . $invite_user_key . "\",\"" . $email_address . "\","
-                . $_SESSION["myx_user_id"] . ")";
+                . $_SESSION["user_id"] . ")";
 
         if( $debug == 1 ) { echo $sql . "<br>"; }
 
@@ -109,7 +105,7 @@ if( $write_to_database == 1 )
         if( $conn->query( $sql ) === TRUE )
         {
             // send email
-            myx_sendEmail( $_SESSION["myx_user_f_name"],$_SESSION["myx_user_l_name"],$email_address, $myx_url, $invite_user_key );
+            sendEmail( $_SESSION["first_name"],$_SESSION["last_name"],$email_address, $retro_url, $invite_user_key );
             
             echo $email_address . " has been invited to join the fun!<br>";    
             echo "Perhaps you'd like to invite another friend.<br><br>";
@@ -135,7 +131,7 @@ if( $write_to_database == 1 )
 
 ?>    
         <form method="post" name="invite friend" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-            Right now, the only way to sign up for MyxTape is to be invited. This<br>
+            Right now, the only way to sign up for the RetroChipDB is to be invited. This<br>
             is to keep the userbase small while we continue to refine the service<br>
             and work out the bugs. So please, invite a friend to come and play and help<br>
             make the service spiff-tastic.<p>
