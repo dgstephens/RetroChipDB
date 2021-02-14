@@ -86,13 +86,13 @@ function getCookieData( $db_conn, $debug )
         $_SESSION["first_name"] = $row["last_name"];
 
         // set user_l_name in the session variable so we can easily refer to it later
-        $_SESSION["myx_user_l_name"] = $row["user_l_name"];
+        $_SESSION["last_name"] = $row["last_name"];
 
         $logged_in = 1;
 
         // IS THIS ACCOUNT A valid Admin?
         $sql_admin_check = "SELECT admin_flag "
-                . "FROM myx_admin_user "
+                . "FROM users "
                 . "WHERE user_id=" . $_SESSION["user_id"];
 
         $result = $db_conn->query( $sql_admin_check );
@@ -124,11 +124,6 @@ function myx_sendEmail( $user_f_name, $user_l_name,$email_address,$myx_url,$invi
     //have 2-step authentication enabled so that the "app" password option
     //is available - as app passwords are the only ones that work with this
     //setup.
-    //
-    //I had this setup to use daniel@myxtape.me through the midphase smtp server
-    //but these emails were constantly marked as spam due to authentication errors
-    //I will need to look up spf authentication in order to allow these emails
-    //to go through.
 
     /****************************************************
      * GMAIL SETUP
