@@ -3,7 +3,7 @@
                 <?php if( $_SESSION["user_id"] > 0) { ?>
                 
                 <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn"><?php echo $_SESSION["first_name"]; ?></button>
+                <button onclick="dropdownMenu()" class="dropbtn"><?php echo $_SESSION["first_name"]; ?></button>
                   <div id="myDropdown" class="dropdown-content">
                     <a href="<?php echo $myx_url; ?>user_account_info.php">Profile</a>
                     <a href="<?php echo $myx_url; ?>change_password.php">Change Password</a>
@@ -21,7 +21,7 @@
         <script>
         /* When the user clicks on the button, 
         toggle between hiding and showing the dropdown content */
-        function myFunction() {
+        function dropdownMenu() {
             document.getElementById("myDropdown").classList.toggle("show");
         }
 
