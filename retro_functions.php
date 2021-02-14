@@ -83,7 +83,7 @@ function getCookieData( $db_conn, $debug )
         $_SESSION["user_name"] = $user_name = $row["user_name"];
 
         // set user_f_name in the session variable so we can easily refer to it later
-        $_SESSION["first_name"] = $row["last_name"];
+        $_SESSION["first_name"] = $row["first_name"];
 
         // set user_l_name in the session variable so we can easily refer to it later
         $_SESSION["last_name"] = $row["last_name"];
