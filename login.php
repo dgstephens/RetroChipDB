@@ -245,7 +245,7 @@ if( $logged_in  == 1 )
     
     $sql = mysqli_query( $conn, "SELECT project_name, project_id "
             . "FROM my_projects "
-            . "WHERE created_by_id = " . $_SESSION["user_id"] );
+            . "WHERE user_id = " . $_SESSION["user_id"] );
     
     echo "<b>Projects you've created</b><p>";    
     if( mysqli_num_rows( $sql ) > 0 )

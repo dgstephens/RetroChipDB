@@ -5,8 +5,8 @@
                 <div class="dropdown">
                 <button onclick="dropdownMenu()" class="dropbtn"><?php echo $_SESSION["first_name"]; ?></button>
                   <div id="myDropdown" class="dropdown-content">
-                    <a href="<?php echo $myx_url; ?>user_account_info.php">Profile</a>
-                    <a href="<?php echo $myx_url; ?>change_password.php">Change Password</a>
+                    <a href="<?php echo $retro_url; ?>user_account_info.php">Profile</a>
+                    <a href="<?php echo $retro_url; ?>change_password.php">Change Password</a>
                 <?php
                     // are we an admin user?
                     if( $_SESSION["admin_user"] == 1 ) { echo "<a href=\"" . $retro_url . "admin_area.php\"><i>Admin Area</i></a>\n"; }
