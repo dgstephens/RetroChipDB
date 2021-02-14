@@ -75,30 +75,30 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) // we came here from submitting this 
 {
     $write_to_database = 1;
 
-    if( empty($_POST["user_f_name"]))
+    if( empty($_POST["first_name"]))
     {
-        $user_f_name_err = "First Name is required";
+        $first_name_err = "First Name is required";
         $write_to_database = 0;
     } else {
-        $user_f_name = test_input( $_POST["user_f_name"]);
+        $first_name = test_input( $_POST["first_name"]);
         // check if name is just letters and whitespace
-        if( !preg_match("/^[a-zA-Z ]*$/",$user_f_name))
+        if( !preg_match("/^[a-zA-Z ]*$/",$first_name))
         {
-            $user_f_name_err = "Use only letters and spaces";
+            $first_name_err = "Use only letters and spaces";
             $write_to_database = 0;
         }
     }
     
-    if( empty( $_POST["user_l_name"]))
+    if( empty( $_POST["last_name"]))
     {
-        $user_l_name_err = "Last Name is required";
+        $last_name_err = "Last Name is required";
         $write_to_database = 0;
     } else {
-        $user_l_name = test_input( $_POST["user_l_name"]);
+        $last_name = test_input( $_POST["last_name"]);
         // check if name is just letters and whitespace
-        if( !preg_match("/^[a-zA-Z ]*$/",$user_f_name))
+        if( !preg_match("/^[a-zA-Z ]*$/",$last_name))
         {
-            $user_l_name_err = "Use only letters and spaces";
+            $last_name_err = "Use only letters and spaces";
             $write_to_database = 0;
         }
     }
@@ -150,13 +150,13 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) // we came here from submitting this 
 else // we came here from a link
 {    
     // GET ACCOUNT INFO
-    $sql = "SELECT * FROM myx_user WHERE user_id=" . $_SESSION["myx_user_id"];
+    $sql = "SELECT * FROM users WHERE user_id=" . $_SESSION["user_id"];
     
     $result = $conn->query( $sql );
     $row = $result->fetch_assoc();
     
-    $user_f_name = $row["user_f_name"];
-    $user_l_name = $row["user_l_name"];
+    $first_name = $row["first_name"];
+    $last_name = $row["last_name"];
     $short_bio = $row["short_bio"];
     $email_address = $row["email_address"];
     $facebook_link = $row["facebook_link"];
@@ -164,8 +164,8 @@ else // we came here from a link
     $instagram_link = $row["instagram_link"];
     $web_url = $row["web_url"];
     
-    $user_f_name_err = "";
-    $user_l_name_err = "";
+    $first_name_err = "";
+    $last_name_err = "";
     $email_address_err = "";
 }
 
@@ -173,23 +173,23 @@ else // we came here from a link
 if( $write_to_database == 1 )
 {
     $sql = "UPDATE myx_user "
-            . "SET user_f_name='" . $user_f_name . "',user_l_name='" . $user_l_name 
+            . "SET first_name='" . $first_name . "',last_name='" . $last_name 
             . "',short_bio='" . $short_bio 
             . "',email_address='" . $email_address . "',facebook_link='" . $facebook_link
             . "',twitter_link='" . $twitter_link . "',instagram_link='" .$instagram_link
             . "',web_url='" . $web_url 
-            . "' WHERE user_id=" . $_SESSION["myx_user_id"];
+            . "' WHERE user_id=" . $_SESSION["user_id"];
     
     if( $debug == 1 ) { echo $sql . "<br>"; }
     
     $result = $conn->query( $sql );
     
-    $_SESSION["myx_user_f_name"] = $user_f_name;
-    $_SESSION["myx_user_l_name"] = $user_l_name;
+    $_SESSION["first_name"] = $first_name;
+    $_SESSION["last_name"] = $last_name;
     
-    echo "User " . $user_f_name . " " . $user_l_name . " updated<br>";
-    echo "Return to <a href=\"" . $myx_url . "login.php\"><b>main</b></a> "
-            . "or <a href=\"" . $myx_url . "user_account_info.php\"><b>View</b></a> Account Info"; 
+    echo "User " . $first_name . " " . $last_name . " updated<br>";
+    echo "Return to <a href=\"" . $retro_url . "login.php\"><b>main</b></a> "
+            . "or <a href=\"" . $retro_url . "user_account_info.php\"><b>View</b></a> Account Info"; 
     
 }
 else // we've come here from a link - display our current data
@@ -197,7 +197,7 @@ else // we've come here from a link - display our current data
     ////////////////////////////////////////////
     // MENU BUTTON and HEADER TITLE
     ////////////////////////////////////////////
-    include 'myx_pulldown_menu_button.php';
+    include 'pulldown_menu_button.php';
     echo "<div class=\"mainDiv\">"; //start main div
     
     echo "<p><b>Update User Account</b></p>\n";
@@ -205,11 +205,11 @@ else // we've come here from a link - display our current data
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <table>
                     <tr><td>First Name<br>
-                        <input type="text" name="user_f_name" placeholder="First Name" size="40" 
-                            value="<?php echo $user_f_name;?>" /> <?php echo $user_f_name_err ?>
+                        <input type="text" name="first_name" placeholder="First Name" size="40" 
+                            value="<?php echo $first_name;?>" /> <?php echo $first_name_err ?>
                     </td><td>Last Name<br>
-                        <input type="text" name="user_l_name" placeholder="Last Name" size="40" 
-                            value="<?php echo $user_l_name;?>" /> <?php echo $user_l_name_err ?>
+                        <input type="text" name="last_name" placeholder="Last Name" size="40" 
+                            value="<?php echo $last_name;?>" /> <?php echo $last_name_err ?>
                         </td></tr>
                     <tr><td>Email Address<br>
                         <input type="text" name="email_address" placeholder="email address" size="40" 
@@ -239,8 +239,8 @@ else // we've come here from a link - display our current data
     
     // Show our last login time - which is the penultimate entry in the myx_user_login_track table
     $sql = "SELECT login_time "
-            . "FROM myx_user_login_track "
-            . "WHERE user_id = " . $_SESSION["myx_user_id"] 
+            . "FROM user_login_track "
+            . "WHERE user_id = " . $_SESSION["user_id"] 
             . " ORDER BY user_login_track_id DESC LIMIT 1";
     
     if( $debug == 1 ) { echo $sql . "<br>"; }

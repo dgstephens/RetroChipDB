@@ -140,20 +140,6 @@ function myx_sendEmail( $first_name, $last_name,$email_address,$retro_url,$invit
     $mail->SMTPSecure = "tls"; // sets the prefix to the servier    
     $mail->Username = "myxtape.me@gmail.com"; // GMAIL username
     $mail->Password = "pztoiubznvtbwrdy"; // GMAIL password
-  
-    /****************************************************
-     * MIDPHASE SETUP
-     
-    $mail->IsSMTP(); // telling the class to use SMTP
-    $mail->SMTPDebug = 0;
-    $mail->SMTPAuth = true; // enable SMTP authentication
-    $mail->Host = 'slmp-550-107.slc.westdc.net'; // sets midphase as the SMTP server
-    $mail->Port = 465; // set the SMTP port for the server
-    $mail->SMTPSecure = "ssl"; // sets the prefix to the servier    
-    $mail->Username = "daniel@geekpower.com"; // username
-    $mail->Password = "Spam1God1"; // password
-    ****************************************************/
-    
 
     //Email Body
     $mail->AddAddress($email_address, 'RetroChipDB User');
