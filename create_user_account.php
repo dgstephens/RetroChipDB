@@ -1,7 +1,7 @@
 <?php
 session_start();
 // accept_user_invite Version .4
-// last modified 062617
+// last modified 140221
 // modified by: dgs
 // TODO
 //
@@ -182,7 +182,7 @@ $user_name = $user_name_err = $password_1 = $password_1_err = $password_2 = $pas
 
 include 'debug_code.php';    
 
-echo "<H1><b>MyxTape</h1>\n<P>Create a MyxTape account</P></b>\n";
+echo "<H1><b>MyxTape</h1>\n<P>Create a RetroChipDB account</P></b>\n";
 
 
 // create connection
