@@ -237,27 +237,27 @@ if( $logged_in  == 1 )
     echo "<div class=\"mainDiv\">"; //start main div
 
     echo "<div class=\"news\">";
-    echo "<b>News</b>&nbsp20-May-2020<p>";
+    echo "<b>News</b>&nbsp14 February, 2021<p>";
     echo "We are working on making your day just a little brighter.<br>"
-        . "Everything is working normally. Have a lovely visit!";
+        . "Right now we are adding inventory functionality to the database!";
 
     echo "</div><p>";
     
-    $sql_my_mixes = mysqli_query( $conn, "SELECT mix_name, mix_id "
-            . "FROM myx_mix "
-            . "WHERE created_by_id = " . $_SESSION["myx_user_id"] );
+    $sql = mysqli_query( $conn, "SELECT project_name, project_id "
+            . "FROM my_projects "
+            . "WHERE created_by_id = " . $_SESSION["user_id"] );
     
-    echo "<b>Mixes you've made</b><p>";    
-    if( mysqli_num_rows( $sql_my_mixes ) > 0 )
+    echo "<b>Projects you've created</b><p>";    
+    if( mysqli_num_rows( $sql ) > 0 )
     {
         echo "<div class=row>";
-        while( $row = mysqli_fetch_assoc( $sql_my_mixes ))
+        while( $row = mysqli_fetch_assoc( $sql ))
         {
             echo "<div class=column>";
             echo "  <div class=mix_container>";
             echo "      <img src=img/MIX_cassette.png>";
             echo "      <div class=mix_text_block>";
-            echo "          <a href=\"" . $myx_url . "add_songs.php?mix_id=" . $row["mix_id"] . "\">" 
+            echo "          <a href=\"" . $retro_url . "add_songs.php?mix_id=" . $row["mix_id"] . "\">" 
                                 . $row["mix_name"] . "</a> &nbsp &nbsp";
             echo "      </div>"; // close text block
             echo "  </div>"; // close container
@@ -269,12 +269,12 @@ if( $logged_in  == 1 )
     }
     else
     {
-        echo "You haven't made any mixes yet! (Sad Face)<br>";
-        echo "Select \"New Mix\" below to create a new mix<br>";
-        echo "And then add songs to it. Happiness!";
+        echo "You haven't started any projects yet! (Sad Face)<br>";
+        echo "Select \"New Project\" below to create a new project<br>";
+        echo "And then add chips to it. Happiness!";
     }
        
-    // COULD ALSO SHOW MIXES THAT WERE MADE OR SHARED WITH THIS USER
+    // COULD ALSO SHOW PROJECTS THAT WERE SHARED WITH THIS USER
  
     // close the connection
     mysqli_close( $conn );
@@ -291,7 +291,7 @@ else
 {
     // NOT LOGGED IN
     echo "You are not logged in.<br>\n";
-    echo "Please continue to the <a href=\"" . $myx_url . "index.php\"><b>login screen</b>.<br>\n";
+    echo "Please continue to the <a href=\"" . $retro_url . "index.php\"><b>login screen</b>.<br>\n";
 }
 ?>    
         
