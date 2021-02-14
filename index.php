@@ -7,8 +7,8 @@ session_start();
 // 1. Check if we have a valid cookie and use it to keep us logged in
 // 
 $debug=0;
-include 'chip_vars.php';
-include 'chip_functions.php';
+include 'retro_vars.php';
+include 'retro_functions.php';
 include 'debug_code.php';
 
 $launch_page_num = rand( 1, 3 );
