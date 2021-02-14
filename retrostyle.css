@@ -1,0 +1,535 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 26, 2017, 12:20:12 PM
+    Updated on : May 31, 2017
+    Author     : daniel
+*/
+
+body {
+    color: #4e4757; 
+    background: #f2f2f2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: #4e4757;
+    margin-left: 0px;
+}
+
+a:link {
+    color: #4e4757;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #4e4757;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #4e4757;
+    text-decoration: none;
+}
+
+a:active {
+    color:#4e4757;
+    text-decoration: none;
+}
+
+.orange {
+    color: #ff7800;
+}
+
+.sm_orange {
+    color: #ff7800;
+    font-size: small;
+}
+
+.news {
+    background: #f2f2f2;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ff7800;
+    border-radius: 9px;
+    width: auto;
+    padding: 25px;
+    margin: 25px;
+}
+
+.title {
+    font-size: xx-large;
+    font-weight: bold;
+    color: #4e4757;
+}
+
+/*********************************************/
+/* Body divs for bg coloring and placement
+/*********************************************/
+.tutorialDiv {
+    background: white;
+    width: 80%;
+    padding: 15px;
+    margin: auto;
+    border-radius: 7px; 
+}
+
+.mainDiv {
+    background: white;
+    width: 70%;
+    padding: 15px;
+    margin: auto;
+    border-radius: 7px; 
+}
+
+.centerDiv {              /* this div is inside the mainDiv */
+    background: white;
+    margin: auto;       /* center this element */
+    text-align: center; /* center align the text */
+    width: 90%;
+    padding: 10px;
+}
+
+.footerDiv {
+    background: #f2f2f2;
+    margin: auto;
+    width: 100%
+}
+
+.menuDiv {              /* this div is inside the footerDiv */
+    background: #f2f2f2;
+    margin: auto;       /* center this element */
+    text-align: center; /* center align the text */
+    width: 50%;
+    padding: 10px;
+}
+
+.songUploadBox {
+    background: white;
+    width: auto;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 7px; 
+}
+
+/* Container holding the image and the text */
+  .mix_container {
+      position: relative;
+  }
+
+  /* Mix Name text */
+  .mix_text_block {
+      position: absolute;
+      top: 20px;
+      left: 10px;
+      background-color: white;
+      color: black;
+      padding-left: 20px;
+      padding-right: 0px;
+      display: block;
+  }
+
+/************************************************/
+
+
+#password_input {
+    width: 50%;
+    /* background-image: url('img/wee_tape.png'); */
+    padding-left: 10px;
+    background-repeat: no-repeat;
+    background-color: #fceed6;
+    color: #4e4757;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    border: 1px solid #74657c;
+    outline: none;
+    padding-left: 10px;
+    box-shadow: none;
+}
+
+
+#username_input {
+    width: 50%;
+    /* background-image: url('img/wee_tape.png'); */
+    padding-left: 10px;
+    background-repeat: no-repeat;
+    background-color: #fceed6;
+    color: #4e4757;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    border: 1px solid #74657c;
+    outline: none;
+    padding-left: 10px;
+    box-shadow: none;
+}
+
+input[type=text], input[type=password] {
+    background-color: #fceed6;
+    color: #4e4757;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    border: 1px solid #74657c;
+    outline: none;
+    padding-left: 10px;
+    box-shadow: none;
+}
+
+/* progress bar/add button swap styling */
+.addProgress {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    width: 90%;
+    height: 1px;
+    border: 0px solid #888888;
+}
+
+/* progress bar/add button swap styling for uploading of Artwork */
+.addArtworkProgress {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    left: 10px;
+    width: 90%;
+    height: 1px;
+    border: 0px solid #888888;
+}
+
+/* file upload button wrapper */
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 1px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+/**************************/
+/* pull-down menu styling */
+/**************************/
+
+select {
+    /* General styling */
+    font-size: large;
+    color: #777777;
+    height: 30px;
+    width: 140px;
+    border-radius: 2;
+    border: none;
+    padding-left: 10px;
+    background: #DDDDDE;
+
+    /* Removes the default <select> styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* Positions background arrow image */
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAh0lEQVQ4T93TMQrCUAzG8V9x8QziiYSuXdzFC7h4AcELOPQAdXYovZCHEATlgQV5GFTe1ozJlz/kS1IpjKqw3wQBVyy++JI0y1GTe7DCBbMAckeNIQKk/BanALBB+16LtnDELoMcsM/BESDlz2heDR3WePwKSLo5eoxz3z6NNcFD+vu3ij14Aqz/DxGbKB7CAAAAAElFTkSuQmCC');
+    /* background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABTElEQVRIS+3VuUolURDG8Z/6BIaDIEZmCsOAkXtiLojRII6KmJq74QOYGYgimPoCwjA4LjCRA2JiIBgomPoCLpScC+21j4J9ze6Bppeq/v51qqurWnzxasnot2MG5/j9QQxj6ME27ut9c4A9/MQTunGVgYTtEqET70zlAL04wDesYRhDyXkEhxlA0XaEv1jBHWJnF7UdLCfh0AnAAEaTaFyfZACDOE62PzhNgHgUmus1wGrBsI84dnCGRfzPAH5gA98xjUlMJN8IdLUMEPbdBOnAEjozgJuIEnEex1zB711AI4q3FHCNWTx+ktCaUtuVvuWbFEUlRAVVWVFJUYGlO2gCIrXNFH1YYM0UVUtRtOVowVVWaPTn/uToQf/wUEcoTr76KVi8b0Mfoie9ahUL2KwSdsm789iq0YP8C9H/G7Fu00x5yA39RkBeNJ4B8ZRkGcdrd3kAAAAASUVORK5CYII='); */
+    background-repeat: no-repeat;
+    background-position: 120px center;
+}
+
+
+input[type=button], input[type=submit] {
+    background-color: #ff7800;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text_decoration: none;
+    margin: 4px 2px;
+    border-radius: 7px;
+    cursor: pointer;
+    outline: none;
+}
+
+.couponSubmit {
+    background-color: #ff7800;
+    border: none;
+    color: white;
+    padding: 10px 20px !important;
+    text_decoration: none;
+    margin: 4px 2px;
+    border-radius: 7px;
+    cursor: pointer;
+    outline: none;
+}
+
+.paySubmit {
+    background-color: #ff7800;
+    border: none;
+    color: white;
+    padding: 10px 20px !important;
+    text_decoration: none;
+    margin-top: 20px !important;
+    margin-right: 10px !important;
+    border-radius: 7px;
+    cursor: pointer;
+    outline: none;
+}
+
+textarea {
+    background-color: #fceed6;
+    color: #4e4757;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 7px;
+    border: 1px solid #74657c;
+    outline: none;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: none
+}
+
+/* Progress Bar Styling */
+progress {
+    border-radius: 3px; 
+    width: 80%;
+    height: 15px;
+    margin-left:-11.5%;
+    -webkit-appearance: none;
+    border: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #EEEEEE;
+    border-radius: 7px;
+    padding: 2px;
+    box-shadow: 0 1px 0px 0 rgba(255,255,255,0.2);
+}
+
+/* Now the value part */
+progress::-webkit-progress-value {
+    border-radius: 7px;
+    box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
+    background:
+            -webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+            -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+            -webkit-linear-gradient(left, #FF7A00, #EE6900);
+
+    /* Looks great, now animating it */
+    background-size: 25px 14px, 100% 100%, 100% 100%;
+    -webkit-animation: move 5s linear 0 infinite;
+}
+
+progress::-moz-progress-bar {
+  /* style rules */
+}
+
+.select-myxstyle {
+    border: 1px solid #ccc;
+    width: 50%;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 5px;
+    /* background: #fafafa; */
+    background: #fafafa url("img/icon-select.png") no-repeat 99% 100%;
+}
+
+.select-myxstyle select {
+    padding: 5px 8px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-myxstyle select:focus {
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #555555;
+}
+
+th, td {
+    padding: 5px;
+    /* border-bottom: 1px solid #ddd; *//* just a horizontal line on the bottom */
+}
+
+td {
+    text-align: center;
+    font-size: small;
+}
+
+th {
+    height: 30px;
+    text-align: left;
+    background-color: #555555;
+    color: white; /* text color */
+}
+
+tr:hover { background-color: #eeeeee }
+
+@media only screen and (max-width: 600px) {
+    input[type=text] {
+        background-color: #fceed6;
+        color: #4e4757;
+        padding: 5px 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 7px;
+        border: 1px solid #74657c;
+        outline: none;
+        padding-left: 10px;
+        box-shadow: none;
+    }
+
+    input[type=password] {
+        /* width: 50%;*/
+        background-color: #fceed6;
+        color: #4e4757;
+        padding: 12px 10px;
+        margin: 8px 0;
+        box-sizing: border-box;   
+        border-radius: 7px;
+        border: 1px solid #74657c;
+        outline: none;
+        padding_left: 10px;
+        box-shadow: none;
+    }
+    
+    #password_input {
+        width: 80%;
+        /* background-image: url('img/wee_tape.png'); */
+        padding-left: 10px;
+        background-repeat: no-repeat;
+        background-color: #fceed6;
+        color: #4e4757;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 7px;
+        border: 1px solid #74657c;
+        outline: none;
+        padding-left: 10px;
+        box-shadow: none;
+    }
+
+
+    #username_input {
+        width: 80%;
+        /* background-image: url('img/wee_tape.png'); */
+        padding-left: 10px;
+        background-repeat: no-repeat;
+        background-color: #fceed6;
+        color: #4e4757;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 7px;
+        border: 1px solid #74657c;
+        outline: none;
+        padding-left: 10px;
+        box-shadow: none;
+    }    
+    
+    .news {
+        background: #f2f2f2;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 7px;
+        width: auto;
+        padding: 10px;
+        margin: 10px;
+    }
+    
+    .tutorialDiv {
+        background: white;
+        width: 80%;
+        padding: 15px;
+        margin: auto;
+        border-radius: 7px; 
+    }
+
+    .mainDiv {
+        background: white;
+        width: 90%;
+        padding: 10px;
+        margin: auto;
+        border-radius: 7px; 
+    }
+
+    .centerDiv {              /* this div is inside the mainDiv */
+        background: white;
+        margin: auto;       /* center this element */
+        text-align: center; /* center align the text */
+        width: 95%;
+        padding: 10px;
+    }
+
+    .footerDiv {
+        background: #f2f2f2;
+        margin: auto;
+        width: 100%
+    }
+
+    .menuDiv {              /* this div is inside the footerDiv */
+        background: #f2f2f2;
+        margin: auto;       /* center this element */
+        text-align: center; /* center align the text */
+        width: 90%;
+        padding: 5px;
+    }
+
+    input[type=button], input[type=submit] {
+        background-color: #ff7800;
+        border: none;
+        color: white;
+        padding: 10px 10px;
+        text_decoration: none;
+        margin: 4px 2px;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+
+    th, td {
+        padding: 1px;
+        /* border-bottom: 1px solid #ddd; *//* just a horizontal line on the bottom */
+    }
+
+    td {
+        text-align: center;
+        font-size: medium;
+    }
+
+    th {
+        height: 15px;
+        text-align: left;
+        background-color: #555555;
+        color: white; /* text color */
+    }    
+}
