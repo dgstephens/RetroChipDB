@@ -6,8 +6,8 @@ session_start();
 // TODO
 //
 $debug=0;
-include 'myx_vars.php';
-include 'myx_functions.php';
+include 'retro_vars.php';
+include 'retro_functions.php';
 include 'debug_code.php';  
 
 // SET VARS
@@ -36,7 +36,7 @@ $user_name = $user_name_err = $password_1 = $password_1_err = $password_2 = $pas
             }
         </script>        
         <link REL="icon" HREF="favicon.ico">
-        <link rel="stylesheet" type="text/css" href="myxstyle.css?<?php echo time(); ?>">
+        <link rel="stylesheet" type="text/css" href="retrostyle.css?<?php echo time(); ?>">
         <meta charset="UTF-8">
         <title>MyxTape Invite User</title>
         <style>
@@ -355,7 +355,7 @@ else
           <div class="modal-content">
             <div class="modal-header">
               <span class="close" id="close2">&times;</span>
-              <h2>About Myxtape</h2>
+              <h2>About RetroChipDB</h2>
             </div>
             <div class="modal-body">
                 MyxTape is all about creating wonderful music mixes for yourself and your friends.
