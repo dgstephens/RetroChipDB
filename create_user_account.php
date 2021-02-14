@@ -375,7 +375,7 @@ else
           <div class="modal-video">
             <div class="modal-header">
               <span class="close" id="close3">&times;</span>
-              <h2>MyxTape</h2>
+              <h2>RetroChipDB</h2>
             </div>
             <div class="modal-body">
                 <iframe id="cartoonVideo" width="560" height="315" src="//www.youtube.com/embed/XomSDI_ML2A" frameborder="0" allowfullscreen></iframe> 
@@ -385,7 +385,7 @@ else
         <!-- Video modal done -->
         
                 <p align="left">
-                    <button id="myInfoBtn">What is MyxTape</button><button id="myVideoBtn">Watch the Video</button>
+                    <button id="myInfoBtn">What is RetroChipDB</button><button id="myVideoBtn">Watch the Video</button>
                 </p>        
         
         <script>
@@ -453,7 +453,7 @@ if( $debug == 1 )
 
 if( empty( $user_name_err ) )
 {
-    $user_name_err = "Choose your MyxTape username";
+    $user_name_err = "Choose your RetroChipDB username";
 }
 if( empty( $email_address_err ) )
 {
