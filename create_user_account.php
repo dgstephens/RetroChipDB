@@ -14,7 +14,7 @@ include 'debug_code.php';
 $user_name = $user_name_err = $password_1 = $password_1_err = $password_2 = $password_2_err = "";
         
 ?>
-<!-- Copyright 2017 myxtape -->
+<!-- Copyright 2021 geekpower -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,10 +38,10 @@ $user_name = $user_name_err = $password_1 = $password_1_err = $password_2 = $pas
         <link REL="icon" HREF="favicon.ico">
         <link rel="stylesheet" type="text/css" href="retrostyle.css?<?php echo time(); ?>">
         <meta charset="UTF-8">
-        <title>MyxTape Invite User</title>
+        <title>RetroChipDB Create Account</title>
         <style>
             body { 
-                background: none; /* overwrite background color from myxstyle.css */
+                background: none; /* overwrite background color from retrostyle.css */
             }
             html{
                 background: url( img/solo_tape_white.png ) fixed no-repeat;
@@ -182,7 +182,7 @@ $user_name = $user_name_err = $password_1 = $password_1_err = $password_2 = $pas
 
 include 'debug_code.php';    
 
-echo "<H1><b>MyxTape</h1>\n<P>Create a RetroChipDB account</P></b>\n";
+echo "<H1><b>RetroChipDB</h1>\n<P>Create a RetroChipDB account</P></b>\n";
 
 
 // create connection
@@ -301,13 +301,13 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" )
     $invite_user_id = $_POST["invite_user_id"];
 }
 
-// Write this info to the myx_user table
+// Write this info to the users table
 if( $write_to_database == 1 )
 {    
     // hash the password
     $password_encr = password_hash( $password_1, PASSWORD_BCRYPT );
     
-    $sql = "INSERT INTO myx_user "
+    $sql = "INSERT INTO users "
             . "(user_name, password, email_address)"
             . "VALUES(\"" . $user_name . "\",\"" . $password_encr . "\" , \""
             . $email_address . "\")";
@@ -317,12 +317,12 @@ if( $write_to_database == 1 )
     // check if return result is TRUE
     if( $conn->query( $sql ) === TRUE )
     {         
-        // CONGRATULATE OUR NEW USER FOR JOINING MyxTape
-        echo "Congratulations " . $user_name . " has joined MyxTape.<br>";
+        // CONGRATULATE OUR NEW USER FOR JOINING RetroChipDB
+        echo "Congratulations " . $user_name . " has joined the RetroChipDB.<br>";
         
         // Find our new user_id
         $sql_user_id = "SELECT user_id "
-                . "FROM myx_user "
+                . "FROM users "
                 . "WHERE user_name = \"" . $user_name . "\"";
         
         if( $debug == 1 ) { echo $sql_user_id . "<br>"; }
@@ -332,10 +332,10 @@ if( $write_to_database == 1 )
         $row = $result->fetch_assoc();        
 
         // ENCOURAGE USER TO ADD MORE USER DATA -> continue to User Account Info section
-        $_SESSION["myx_user_id"] = $row["user_id"];
-        $_SESSION["myx_user_f_name"] = "user"; // Set this to something so it is not blank when we see the "account" pull-down menu
+        $_SESSION["user_id"] = $row["user_id"];
+        $_SESSION["user_f_name"] = "user"; // Set this to something so it is not blank when we see the "account" pull-down menu
         echo "<br>Now that you have successfully created an account<br> ";
-        echo "Please add more info to your <b><a href=\"" . $myx_url 
+        echo "Please add more info to your <b><a href=\"" . $retro_url 
             . "user_account_info.php\">profile</a>.</b>";       
         echo "<p>Or go straight to the fun and create a <a href=\"/login.php\"><span class=orange>new mix</class>.</a>";
     }
@@ -358,10 +358,11 @@ else
               <h2>About RetroChipDB</h2>
             </div>
             <div class="modal-body">
-                MyxTape is all about creating wonderful music mixes for yourself and your friends.
-                It is a simple platform that allows you to upload music you already own to create
-                a custom mix on an analog audio cassette. We then mail that cassette, along with
-                custom art, to you or a friend.<p>
+                The Retro Chip DB exists to help you keep track of the nifty bits you use to
+                keep your retro gear running. I developed it for myself and thought that
+                there's likely at least one other person who might find this useful. So,
+                Trevor, this is for you.<p>
+                <p>
             </div>
           </div>     
         </div>
