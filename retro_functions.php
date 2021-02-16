@@ -48,7 +48,7 @@ function getCookieData( $db_conn, $debug )
     if( $debug == 1 )
         echo "selector: " . $selector . " authenticator: " . $authenticator . "<br>";
 
-    $sql = "SELECT * FROM user_cookie_track"
+    $sql = "SELECT * FROM user_cookies"
             . " WHERE selector = '" . $selector . "'";
 
     if( $debug == 1 )
