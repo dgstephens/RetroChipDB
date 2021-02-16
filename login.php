@@ -257,7 +257,7 @@ if( $logged_in  == 1 )
             echo "  <div class=mix_container>";
             echo "      <img src=img/project_icon.png>";
             echo "      <div class=mix_text_block>";
-            echo "          <a href=\"" . $retro_url . "add_songs.php?mix_id=" . $row["project_id"] . "\">" 
+            echo "          <a class=projects href=\"" . $retro_url . "add_songs.php?mix_id=" . $row["project_id"] . "\">" 
                                 . $row["project_name"] . "</a> &nbsp &nbsp";
             echo "      </div>"; // close text block
             echo "  </div>"; // close container

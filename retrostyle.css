@@ -120,12 +120,15 @@ a:active {
       position: relative;
   }
 
+  a.projects:link { color: white; }
+  a.projects:visited { color: white; }
+  a.projects:hover {color: white; }
+
   /* Mix Name text */
   .mix_text_block {
       position: absolute;
       top: 20px;
       left: 10px;
-      background-color: ;
       color: white;
       padding-left: 20px;
       padding-right: 0px;
